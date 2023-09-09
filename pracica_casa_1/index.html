@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    <script>
+        //formulario que pida cedula, nombre, apellido,  sexo,  edad a cierta cantidad de personas, 
+        //1.cuantos hombre y cuantas mujeres hay 
+        //2.en un array colocar la menor edad y la mayor 
+        //3.promedio de edad 
+        //4.que al consultar por el numero de cedula me bote los datos de la persona 
+        //5.imprima en array los nombres de las personas menores de 30 años 
+        let arrPersonas = []
+        let arrEdadmenorymayor = []
+        let arrNombremenora = []
+        let cant = prompt("Digite la cantidad de personas a registrar")
+        let ceduIntroducida, nombreIntroducido, ApellIntroducido, sexoIntroducido, edadIntroducida
+        let cedCondulta
+        let objDatos = {}
+        let mujer = 0
+        let hombre = 0
+        let edadmayor = 0
+        let edadmenor
+        let sum = 0
+        let nombremenor
+        for (let i = 0; i < cant; i++) {
+            nombreIntroducido = prompt("Digite su nombre")
+            objDatos.nombre = nombreIntroducido
+            ApellIntroducido = prompt("Digite su apellido")
+            objDatos.apellido = ApellIntroducido
+            ceduIntroducida = prompt("Digite su cedula")
+            objDatos.cedula = ceduIntroducida
+            sexoIntroducido = prompt("Digte su sexo")
+            while (sexoIntroducido !== "masculino" && sexoIntroducido !== "femenino") {
+                alert("sexo invalido");
+                sexoIntroducido = prompt("Digte su sexo");
+            }
+            //en este punto solo pasara con masculino o femenino
+            objDatos.sexo = sexoIntroducido
+            edadIntroducida = parseInt(prompt("Digite su edad"))
+            objDatos.edad = edadIntroducida
+            arrPersonas.push(objDatos)
+
+            sum = sum + edadIntroducida// 3. promedio 
+            if (sexoIntroducido == "femenino") {//1.contar cuantas mujes y hombre hay 
+                mujer = mujer + 1
+            }
+            else {
+                hombre = hombre + 1
+            }
+            if (i === 0) {//2. edad menor para inicializar en el primer valor y compara 
+                edadmenor = edadIntroducida
+            }
+            if (edadIntroducida < edadmenor) {
+                edadmenor = edadIntroducida
+            }
+            if (edadIntroducida > edadmayor) {//2.edad mayor
+                edadmayor = edadIntroducida
+            }
+            if (edadIntroducida < 30) {//5. nombres de las cedulas menores a 30 años 
+                arrNombremenora.push(nombreIntroducido)
+            }
+
+
+            objDatos = {}
+
+        }
+        cedCondulta = prompt("Digite su cedula a consultar")
+        let existe = false
+        let nomConsulta
+        let apConsulta
+        let sexConsulta
+        let edadConsulta
+        for (let i = 0; i < arrPersonas.length; i++) {
+            if (cedCondulta === arrPersonas[i].cedula) {
+                existe = true
+                nomConsulta = arrPersonas[i].nombre
+                apConsulta = arrPersonas[i].apellido
+                sexConsulta = arrPersonas[i].sexo
+                edadConsulta = arrPersonas[i].edad
+            }
+        }
+        if (existe === true) {
+            console.log("nombre:" + nomConsulta + " apellido:" + apConsulta + " sexo:" + sexConsulta + " edad:" + edadConsulta)
+        }
+        else {
+            console.log("la cedula no existe")
+        }
+        arrEdadmenorymayor.push(edadmenor)
+        arrEdadmenorymayor.push(edadmayor)
+        console.log("hay " + hombre + " hombre")
+        console.log("hay " + mujer + " mujeres")
+        console.log(arrPersonas)
+        console.log(arrNombremenora)
+        console.log(arrEdadmenorymayor)
+        let promedio = (sum / cant).toFixed(2)
+        console.log
+            (promedio)
+    </script>
+</head>
+
+</html>

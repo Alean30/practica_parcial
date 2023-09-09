@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <script>
+        let arrCarros = [];
+        let placaCarros = [];
+        let arrMayorymenor = [];
+        let cant = prompt("digite cuantos carros");
+        let placaIntroducido, colorintroducido, cilindrajeIntroducido;
+        let objAuto = {};
+        let car = 0;
+        let placamenor, ciindrajemenor
+        let sum = 0;
+        let cilindrajemayor = 0;
+        for (let i = 0; i < cant; i++) {
+            placaIntroducido = prompt("dijite la placa del carro");
+            colorintroducido = prompt("dijite el color del carro");
+            cilindrajeIntroducido = parseFloat(prompt("dijite el cilindraje del carro"));
+
+
+            sum = sum + cilindrajeIntroducido//tercer punto, promedio de los cilindrajes 
+
+            objAuto.placa = placaIntroducido
+            objAuto.color = colorintroducido
+            objAuto.cilindraje = cilindrajeIntroducido
+
+            arrCarros.push(objAuto);
+
+            objAuto = {}
+
+            if (cilindrajeIntroducido > 1600) {// segundo punto, inprima un array con placa de los cindrajes mayores a 1600
+                placaCarros.push(placaIntroducido)
+            }
+
+            if (i === 0) {
+                ciindrajemenor = cilindrajeIntroducido
+                placamenor = placaIntroducido
+
+            }//cuarto punto, imprima la placa del menor cilindraje 
+
+            if (cilindrajemayor < cilindrajeIntroducido) {
+                cilindrajemayor = cilindrajeIntroducido
+
+            }// quinto punto 
+            
+        }
+        arrMayorymenor.push(ciindrajemenor)
+        arrMayorymenor.push(cilindrajemayor)// quinto punto, imprima un array de dos valoresdonde sean el menor y el mayor cilindraje 
+        let promedio = (sum / cant).toFixed(2);//tercer punto, promedio de los cilindrajes 
+        console.log("el promedio es " + promedio)
+        console.log("cilindraje menor y ciindraje mayor" + arrMayorymenor)
+        console.log("la placa de menor cilindraje es" + placamenor)
+        console.log(arrCarros)// primer punto, imprima el array de el objeto
+        console.log(placaCarros)
+        // ingresar una placa y si esta se debe arrojar el color 
+    </script>
+</head>
+
+</html>
